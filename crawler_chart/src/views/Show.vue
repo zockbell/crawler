@@ -1,19 +1,19 @@
 <template>
   <div>
-    <h2>深色模式适配</h2>
+    <h2>雅思课程数据</h2>
     <v-chart :options="orgOptions" />
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import moment from 'moment';
-import 'echarts/theme/dark';
-import ECharts from 'vue-echarts';
+import axios from "axios";
+import moment from "moment";
+import "echarts/theme/dark";
+import ECharts from "vue-echarts";
 
 export default {
   components: {
-    'v-chart': ECharts,
+    "v-chart": ECharts,
   },
   data() {
     return {
@@ -28,13 +28,13 @@ export default {
   created() {
     // 数据请求
     axios
-      .get('/js/getCourse.json')
+      .get("/js/getCourse.json")
       .then((res) => {
         this.courseData = res.data;
         console.log(this.courseData);
         for (let i in this.courseData) {
           const item = this.courseData[i];
-          this.courseTime.push(moment(Number(i)).format('YYYY-MM-DD HH:mm:ss'));
+          this.courseTime.push(moment(Number(i)).format("YYYY-MM-DD HH:mm"));
           item.forEach((innerItem) => {
             const { title, count } = innerItem;
             if (this.courseName.indexOf(title) == -1) {
@@ -49,11 +49,11 @@ export default {
         for (let i in this.tempData) {
           this.seriesData.push({
             name: i,
-            type: 'bar',
-            stack: '总量',
+            type: "bar",
+            stack: "总量",
             label: {
               show: true,
-              position: 'insideRight',
+              position: "insideRight",
             },
             data: this.tempData[i],
           });
@@ -68,26 +68,26 @@ export default {
     // 图表配置项
     this.orgOptions = {
       tooltip: {
-        trigger: 'axis',
+        trigger: "axis",
         axisPointer: {
           // 坐标轴指示器，坐标轴触发有效
-          type: 'shadow', // 默认为直线，可选为：'line' | 'shadow'
+          type: "shadow", // 默认为直线，可选为：'line' | 'shadow'
         },
       },
       legend: {
         data: this.courseName,
       },
       grid: {
-        left: '3%',
-        right: '4%',
-        bottom: '3%',
+        left: "3%",
+        right: "4%",
+        bottom: "3%",
         containLabel: true,
       },
       xAxis: {
-        type: 'value',
+        type: "value",
       },
       yAxis: {
-        type: 'category',
+        type: "category",
         data: this.courseTime,
       },
       series: this.seriesData,
