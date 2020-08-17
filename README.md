@@ -118,7 +118,7 @@
 
 2. 此时安装了 `nodemon` 当修改 `.js`文件时，控制台将时时监听并更新，控制台如下图：
 
-   ![](D:\zock\crawler-github\crawler\crawler_chart\src\assets\1.png)
+   ![](https://github.com/zockbell/crawler/blob/master/crawler_chart/src/assets/1.png)
 
    > 需要注意，当修改.ts文件时，nodemon是不会监听变化的，需要修改它的配置。
 
@@ -134,7 +134,7 @@
      },
    ```
 
-   ![](D:\zock\crawler-github\crawler\crawler_chart\src\assets\2.png)
+   ![](https://github.com/zockbell/crawler/blob/master/crawler_chart/src/assets/2.png)
 
 #### 六、前端使用vue-echarts对爬取的数据进行展示
 
@@ -155,7 +155,7 @@
 
 3. 效果图展示：
 
-   ![](D:\zock\crawler-github\crawler\crawler_chart\src\assets\3.png)
+   ![](https://github.com/zockbell/crawler/blob/master/crawler_chart/src/assets/3.png)
 
 #### 七、总结：
 
