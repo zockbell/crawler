@@ -69,14 +69,24 @@ var Crawler = /** @class */ (function () {
             data: couseArr,
         };
         // console.log(finalData);
-        this.getCourseData(finalData);
+        // 爬取数据调用（最终数据，存放文件目录名）
+        this.getCourseData(finalData, "data");
     };
     // 最终数据遍历存储
-    Crawler.prototype.getCourseData = function (finalData) {
-        var filepath = path_1.default.resolve(__dirname, "../data/getCourse.json");
+    Crawler.prototype.getCourseData = function (finalData, dirName) {
+        // 存放目录(先判断是否存在)
+        // const fileDir = fs.existsSync("data");
+        // console.log(fileDir);
+        var createDir = function (dir) {
+            return !fs_1.default.existsSync(dir) ? fs_1.default.mkdirSync(dir) : undefined;
+        };
+        createDir(dirName); // 执行一次
+        // 存放路径
+        var filepath = path_1.default.resolve(__dirname, "../" + dirName + "/getCourse.json");
         var fileContent = {};
         if (fs_1.default.existsSync(filepath)) {
             fileContent = JSON.parse(fs_1.default.readFileSync(filepath, "utf-8"));
+            console.log(fileContent);
         }
         fileContent[finalData.time] = finalData.data;
         fs_1.default.writeFileSync(filepath, JSON.stringify(fileContent));

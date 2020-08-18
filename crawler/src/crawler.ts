@@ -40,15 +40,28 @@ class Crawler {
     };
 
     // console.log(finalData);
-    this.getCourseData(finalData);
+    // 爬取数据调用（最终数据，存放文件目录名）
+    this.getCourseData(finalData, "data");
   }
 
   // 最终数据遍历存储
-  getCourseData(finalData: any) {
-    const filepath = path.resolve(__dirname, "../data/getCourse.json");
+  getCourseData(finalData: any, dirName: string) {
+    // 存放目录(先判断是否存在)
+    // const fileDir = fs.existsSync("data");
+    // console.log(fileDir);
+    const createDir = (dir: any) =>
+      !fs.existsSync(dir) ? fs.mkdirSync(dir) : undefined;
+    createDir(dirName); // 执行一次
+
+    // 存放路径
+    const filepath = path.resolve(
+      __dirname,
+      "../" + dirName + "/getCourse.json"
+    );
     let fileContent: Content = {};
     if (fs.existsSync(filepath)) {
       fileContent = JSON.parse(fs.readFileSync(filepath, "utf-8"));
+      console.log(fileContent);
     }
     fileContent[finalData.time] = finalData.data;
     fs.writeFileSync(filepath, JSON.stringify(fileContent));
