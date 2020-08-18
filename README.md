@@ -158,5 +158,6 @@
    ![](https://github.com/zockbell/crawler/blob/master/crawler_chart/src/assets/3.png)
 
 #### 七、总结：
-
-此项目是一个较轻的爬虫脚本系统，后期可以使用node以接口的形式输出，前端进行接口请求。
+启动 `crawler` 获取数据，运行命令： `npm run dev`
+启动 `crawler-chart` 展示数据，运行命令： `yarn serve` or `npm run serve`
+> 备注：此项目是一个较轻的爬虫脚本系统，后期可以使用node以接口的形式输出，前端进行接口请求。
